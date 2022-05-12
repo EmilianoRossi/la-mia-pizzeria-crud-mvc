@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\img\kisspng-pizza-pizza-logo-pizza-icon-5a857cee4496c8.044598621518697710281.jpg" />
+    <None Include="wwwroot\css\img\logo.png" />
+    <None Include="wwwroot\css\img\logo3.png" />
+    <None Include="wwwroot\css\img\LOGO4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.8" />
+  </ItemGroup>
+
+</Project>

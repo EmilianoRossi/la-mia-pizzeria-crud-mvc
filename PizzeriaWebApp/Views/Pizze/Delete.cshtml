@@ -1,0 +1,49 @@
+﻿@model Pizza
+@{
+
+    Layout = "_mioLayout";
+
+}
+
+<body>
+    <main>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center">
+                    <img src="https://toolset.mrw.it/temp/logo_244298b5e7fe66e5878093a053afb2a7.png" class="card-img-top" alt="primaFoto">
+                </div>
+                <form asp-controller = "Pizze" asp-action="Delete" asp-route-id="@Model.id" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="col-3 mb-3">
+                        <img src="https://toolset.mrw.it/temp/logo_ab130ca5657d2e5c53a12842400e3df3.png" />
+                        <input asp-for="nome" class="d-block w-100" />
+                        <span asp-validation-for="nome" class="text-danger"></span>
+                    </div>
+                    <div class="col-3 mb-5">
+                        <img src="https://toolset.mrw.it/temp/logo_ca92da41258edcf1dd565985b226cfa6.png" />
+                        <input asp-for="prezzo" class="d-block w-100" />
+                        <span asp-validation-for="prezzo" class="text-danger"></span>
+                    </div>
+                    <div class="col-3 mb-3">
+                        <img src ="https://toolset.mrw.it/temp/logo_263458ff47171f355c42db4bea5801c2.png" />
+                        <input asp-for="foto" class="d-block w-100" />
+                        <span asp-validation-for="foto" class="text-danger"></span>
+                    </div>
+                    <div class="col-3 mb-3">
+                        <img src="https://toolset.mrw.it/temp/logo_050c9ff9bece8d5055a4d81ddd6c9077.png" />
+                        <textarea asp-for="descrizione" rows="10" class="d-block w-100"></textarea>
+                        <span asp-validation-for="descrizione" class="text-danger"></span>
+                    </div>
+                    <div class="text-start">
+                        <input type="submit" class="btn btn-small btn-success" value="Salva">
+                    </div>
+                
+
+                </form>
+            </div>
+        </div>
+    </div>
+    </main>
+</body>
