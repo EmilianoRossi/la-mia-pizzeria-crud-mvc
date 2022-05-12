@@ -22,6 +22,14 @@ namespace PizzeriaWebApp.Controllers
         }
 
         [HttpGet]
+        public IActionResult HomePage()
+        {
+
+            return View();
+
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
 
