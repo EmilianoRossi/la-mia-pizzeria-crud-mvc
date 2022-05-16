@@ -10,10 +10,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="d-flex align-items-center">
+            <div class="col-4">
+                <div class="d-flex align-items-center mb-5">
                     <img src="https://toolset.mrw.it/temp/logo_244298b5e7fe66e5878093a053afb2a7.png" class="card-img-top" alt="primaFoto">
                 </div>
+
                 <form asp-controller = "Pizze" asp-action="Update" asp-route-id="@Model.id" method="post">
                     @Html.AntiForgeryToken()
                     <div class="col-3 mb-3">

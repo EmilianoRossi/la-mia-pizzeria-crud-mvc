@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="site.css" rel="stylesheet" type="text/css">
+    <link href=".\css/site.css" rel="stylesheet" type="text/css">
 
 
     <!-- Bootstrap CSS -->
@@ -16,20 +16,28 @@
         
     <title>Pizzeria Web App</title>
   </head>
-  <body style="position:relative; height: 100%; background:#fff url('https://t3.ftcdn.net/jpg/01/90/55/84/360_F_190558434_hstWa2Orgb5kFDMVb3Q0koH2bRmpEbSm.jpg') no-repeat ; background-size:cover; box-shadow:inset 0 -1px 5px rgba(0,0,0,0.6);">
+    <body style="position:relative; height: 100%; background:#fff url('https://t3.ftcdn.net/jpg/01/90/55/84/360_F_190558434_hstWa2Orgb5kFDMVb3Q0koH2bRmpEbSm.jpg') no-repeat ; background-size:cover; box-shadow:inset 0 -1px 5px rgba(0,0,0,0.6);">
       <header> 
 
-        <nav class="navbar fixed-top navbar-light bg-danger border-circle">
+        <nav class="navbar navbar-light bg-danger border-circle">
             <div class="container">
                    
-                        <a href=@Url.Action("Index" , "Pizze")>
-                            <img src="https://images.vexels.com/media/users/3/136312/isolated/preview/213fb725b5fbbd669093a338c9c16bdd-logo-pizza-fast-food.png" alt="" width="50" height="50" >
-                        <img src="https://toolset.mrw.it/temp/logo_febdfd08fae23e9cac0d38c649bc386a.png" alt="" width="150" height="30">
+                <a href=@Url.Action("Index" , "Pizze")>
+                    <img src="https://images.vexels.com/media/users/3/136312/isolated/preview/213fb725b5fbbd669093a338c9c16bdd-logo-pizza-fast-food.png" alt="" width="50" height="50" >
+                    <img src="https://toolset.mrw.it/temp/logo_febdfd08fae23e9cac0d38c649bc386a.png" alt="" width="150" height="30">
                        
-                    </a>
-            </div>
-            <a class="navbar-brand">
                 </a>
+
+                <a href=@Url.Action("Cart" , "Pizze")>
+                    Carrello 
+                </a>
+
+            </div>
+
+            <a class="navbar-brand">
+
+            </a>
+
         </nav>
 
       </header>
@@ -40,79 +48,81 @@
 
       </main>
 
-      <!-- Footer -->
-<footer class="bg-danger text-center text-white">
-  <!-- Grid container -->
-  <div class="container p-4">
-    <!-- Section: Social media -->
-    <section class="mb-4">
-      <!-- Facebook -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <i class="fa fa-facebook-f"></i>
-      </a>
+        <!-- Footer -->
+        <footer class="bg-danger text-center text-white">
 
-      <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <i class="fa fa-twitter"></i>
-      </a>
+            <!-- Grid container -->
+            <div class="container p-4">
 
-      <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fa fa-instagram"></i
-      ></a>
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                  <!-- Facebook -->
+                  <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                      <i class="fa fa-facebook-f"></i>
+                  </a>
 
-    </section>
-    <!-- Section: Social media -->
+                  <!-- Twitter -->
+                  <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                      <i class="fa fa-twitter"></i>
+                  </a>
 
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>Registrati alla nostra NewsLetters</strong>
-            </p>
-          </div>
-          <!--Grid column-->
+                  <!-- Instagram -->
+                  <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                    ><i class="fa fa-instagram"></i
+                  ></a>
 
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline form-white mb-4">
-              <input type="email" id="form5Example21" class="form-control" />
-            </div>
-          </div>
-          <!--Grid column-->
+                </section>
+                <!-- Section: Social media -->
 
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-outline-light mb-4">
-              Iscriviti
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
+                <!-- Section: Form -->
+                <section class="">
+                  <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                      <!--Grid column-->
+                      <div class="col-auto">
+                        <p class="pt-2">
+                          <strong>Registrati alla nostra NewsLetters</strong>
+                        </p>
+                      </div>
+                      <!--Grid column-->
+
+                      <!--Grid column-->
+                      <div class="col-md-5 col-12">
+                        <!-- Email input -->
+                        <div class="form-outline form-white mb-4">
+                          <input type="email" id="form5Example21" class="form-control" />
+                        </div>
+                      </div>
+                      <!--Grid column-->
+
+                      <!--Grid column-->
+                      <div class="col-auto">
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-outline-light mb-4">
+                          Iscriviti
+                        </button>
+                      </div>
+                      <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                  </form>
+                </section>
     
-  </div>
+            </div>
   
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">PizzaWebApp.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
+             <!-- Copyright -->
+             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2020 Copyright:
+                <a class="text-white" href="https://mdbootstrap.com/">PizzaWebApp.com</a>
+             </div>
+                <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+            <!-- Option 1: Bootstrap Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+            </script>
   </body>
 </html>

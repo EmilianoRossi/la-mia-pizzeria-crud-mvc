@@ -7,6 +7,7 @@ namespace PizzeriaWebApp.Data
     {
 
         public DbSet<Pizza> Pizzas { get; set; }
+        public DbSet<Utente> Utenti { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
 
