@@ -8,14 +8,6 @@ namespace PizzeriaWebApp.Controllers
     {
 
         [HttpGet]
-        public IActionResult HomePage()
-        {
-
-            return View("HomePage");
-
-        }
-
-        [HttpGet]
         public IActionResult Registrazione()
         {
 
@@ -45,6 +37,39 @@ namespace PizzeriaWebApp.Controllers
             }
 
             return RedirectToAction("HomePage" , "Utente");
+
+        }
+
+        [HttpGet]
+        public IActionResult HomePage()
+        {
+
+            return View("HomePage");
+
+        }
+
+        [HttpPost]
+
+        public IActionResult HomePage(Utente utenteLog)
+        {
+
+            using (PizzaContext db = new PizzaContext())
+            {
+                Utente? result = (from e in db.Utenti where e.nomeUtente == utenteLog.nomeUtente && e.password == utenteLog.password select e).FirstOrDefault();
+                if (result != null)
+                {
+                    
+                    return RedirectToAction("Index" , "Pizze");
+                }
+                else
+                {
+
+                    
+                    ViewBag.message = string.Format("Nome utente o password errati.");
+                    return View("HomePage");
+
+                }
+            }
 
         }
     }

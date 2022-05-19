@@ -72,7 +72,7 @@ namespace PizzeriaWebApp.Controllers
             using (PizzaContext db = new PizzaContext())
             {
                 pizzaToEdit = db.Pizzas
-                     .Where(post => post.id == id)
+                     .Where(pizza => pizza.id == id)
                      .FirstOrDefault();
 
             }
