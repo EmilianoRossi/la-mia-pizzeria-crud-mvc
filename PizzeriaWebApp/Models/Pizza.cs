@@ -6,24 +6,21 @@ namespace PizzeriaWebApp.Models
     public class Pizza
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage="Il campo è obbligatorio")]
         [StringLength(15 , ErrorMessage="Il nome deve essere di massimo 15 caratteri")]
-        public string nome { get; set; }
+        public string Nome { get; set; }
         [Required(ErrorMessage = "Il prezzo è obbligatorio")]
-        public double prezzo { get; set; }
+        public double Prezzo { get; set; }
         [Required(ErrorMessage = "descrizione è obbligatorio")]
         [Column(TypeName="text")]
-        public string descrizione { get; set; }
+        public string Descrizione { get; set; }
         [Required(ErrorMessage = " Il link della foto è obbligatorio")]
         [Url(ErrorMessage ="Devi inserire un Url")]
-        public string foto { get; set; }
-
-        
-
-
-
+        public string Foto { get; set; }
+        public int CategoriaId { get; set; }
+        public Categoria? Categoria { get; set; }
         public Pizza()
         {
              
@@ -34,9 +31,9 @@ namespace PizzeriaWebApp.Models
         public Pizza(string nome , double prezzo , string descrizione , string foto)
         {
 
-            this.nome = nome;
+            this.Nome = nome;
             this.prezzo = prezzo;
-            this.descrizione = descrizione;
+            this.Descrizione = descrizione;
             this.foto = foto;
 
         }

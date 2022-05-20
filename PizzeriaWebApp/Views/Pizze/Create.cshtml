@@ -1,0 +1,67 @@
+﻿@model PizzasCategories
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="d-flex align-items-center">
+
+                <h1 class="mt-3 mb-3 "> Nuova Pizza</h1>
+
+            </div>
+            <form action ="@Url.Action("Create" , "Pizze")" method="post">
+
+                @Html.AntiForgeryToken()
+                <div class="mb-3">
+
+                    <strong>Immagine:</strong>
+                    <input asp-for ="pizza.foto" class="d-block w-100" />
+                    <span asp-validation-for="pizza.foto" class="text-success"></span>
+                </div>    
+
+                <div class="mb-3">
+
+                    <strong>Nome:</strong>
+                    <input asp-for ="pizza.Nome" class="d-block w-100" />
+                    <span asp-validation-for="pizza.Nome" class="text-success"></span>
+                </div>    
+
+                <div class="mb-3">
+
+                    <strong>Descrizione:</strong>
+                    <textarea asp-for ="pizza.Descrizione" rows="10" class="d-block w-100" ></textarea>
+                    <span asp-validation-for="pizza.Descrizione" class="text-success"></span>
+                </div>
+                <div class="mb-3">
+
+                    <strong>Prezzo:</strong>
+                    <input asp-for ="pizza.prezzo" class="d-block w-100" />
+                    <span asp-validation-for="pizza.prezzo" class="text-success"></span>
+                </div>
+                <div class="mb-3">
+
+                    <strong>Categoria:</strong>
+                    <select asp-for ="pizza.CategoriaId" class="form-select" aria-label="Default select example" >
+                        <option selected>Seleziona una categoria</option>
+                    @foreach(Categoria categoria in Model.categorias)
+                    {
+                            
+                        <option value="@categoria.Id">@categoria.titolo</option>
+
+                    }
+                    </select>
+                </div>
+                <div class="text-end">
+
+                    <input type="submit" class="btn btn-small btn-success" value="Salva" />
+
+                </div>
+                </form>
+
+        </div>
+
+    </div>
+
+</div>

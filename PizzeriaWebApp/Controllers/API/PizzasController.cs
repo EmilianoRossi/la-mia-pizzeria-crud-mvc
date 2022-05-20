@@ -19,7 +19,7 @@ namespace PizzeriaWebApp.Controllers.API
                 // LOGICA PER RICERCARE I POST CHE CONTENGONO NEL TIUOLO O NELLA DESCRIZIONE LA STRINGA DI RICERCA
                 if (search != null && search != "")
                 {
-                    pizzas = db.Pizzas.Where(pizze => pizze.nome.Contains(search) || pizze.descrizione.Contains(search)).ToList<Pizza>();
+                    pizzas = db.Pizzas.Where(pizze => pizze.Nome.Contains(search) || pizze.Descrizione.Contains(search)).ToList<Pizza>();
                 }
                 else
                 {

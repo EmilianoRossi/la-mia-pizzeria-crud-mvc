@@ -30,14 +30,14 @@
             <div class="card shadow mb-5 bg-body rounded">
                 <img class="img-fluid" src=@listPizza.foto class="card-img-top" lt="primaFoto">
                 <div class="card-body p-0 pb-0">
-                    <h6 class="card-title text-uppercase bg-danger pb-2 pt-2 text-white ">@listPizza.nome</h6>
-                    <p class="card-text ps-2 pe-2 mb-4 mt-3"><small>@listPizza.descrizione</small></p>
+                    <h6 class="card-title text-uppercase bg-danger pb-2 pt-2 text-white ">@listPizza.Nome</h6>
+                    <p class="card-text ps-2 pe-2 mb-4 mt-3"><small>@listPizza.Descrizione</small></p>
                 </div>
                 <ul class="list-group list-group-flush pb-0 mb-2">
                     <li class="list-group-item text-danger"><small>Prezzo:</small><br><span class="text-black fw-bold"><small>@listPizza.prezzo</small></span><span class="text-secondary"></span></li> 
                 </ul> 
                 <ul class="list-group list-group-flush pb-0 mb-2">
-                       <form asp-controller = "Pizze" asp-action="Update" asp-route-id="@listPizza.id" method="post">
+                       <form asp-controller = "Pizze" asp-action="Update" asp-route-id="@listPizza.Id" method="post">
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-danger btn-sn">Modifica</button> 
                         </form>
@@ -45,7 +45,7 @@
                 <ul class="list-group list-group-flush pb-0 mb-2">
                     <li class="list-group-item text-danger">
 
-                        <form asp-controller = "Pizze" asp-action="Delete" asp-route-id="@listPizza.id" method="post">
+                        <form asp-controller = "Pizze" asp-action="Delete" asp-route-id="@listPizza.Id" method="post">
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-danger btn-sn">Cancella</button> 
                         </form>
@@ -54,7 +54,7 @@
                 <ul class="list-group list-group-flush pb-0 mb-2">
                     <li class="list-group-item text-danger">
 
-                        <form asp-controller = "Pizze" asp-action="Cart" asp-route-id="@listPizza.id" method="post">
+                        <form asp-controller = "Pizze" asp-action="Cart" asp-route-id="@listPizza.Id" method="post">
                             @Html.AntiForgeryToken()
                             <button type="submit" class="btn btn-danger btn-sn">Aggiungi al carrello</button> 
                         </form>

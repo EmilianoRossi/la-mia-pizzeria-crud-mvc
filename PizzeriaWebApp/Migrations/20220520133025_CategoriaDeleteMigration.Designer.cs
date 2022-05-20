@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzeriaWebApp.Data;
 
@@ -11,9 +12,10 @@ using PizzeriaWebApp.Data;
 namespace PizzeriaWebApp.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    partial class PizzaContextModelSnapshot : ModelSnapshot
+    [Migration("20220520133025_CategoriaDeleteMigration")]
+    partial class CategoriaDeleteMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +50,10 @@ namespace PizzeriaWebApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<int?>("categoriaid")
+                    b.Property<int?>("Categoriaid")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("descrizione")
@@ -69,7 +74,7 @@ namespace PizzeriaWebApp.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("categoriaid");
+                    b.HasIndex("Categoriaid");
 
                     b.ToTable("Pizzas");
                 });
@@ -101,7 +106,7 @@ namespace PizzeriaWebApp.Migrations
                 {
                     b.HasOne("PizzeriaWebApp.Models.Categoria", "Categoria")
                         .WithMany("pizzas")
-                        .HasForeignKey("categoriaid");
+                        .HasForeignKey("Categoriaid");
 
                     b.Navigation("Categoria");
                 });

@@ -33,27 +33,45 @@ namespace PizzeriaWebApp.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            using(PizzaContext db = new PizzaContext())
+            {
 
-            return View("FormPost");
+                List<Categoria> categories = db.Categorie.ToList();
+                PizzasCategories model = new PizzasCategories();
+                model.pizza = new Pizza();
+                model.categorias = categories;
+                return View("Create", model);
 
+            }
+            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Pizza nuovaPizza)
+        public IActionResult Create(PizzasCategories data)
         {
 
             if (!ModelState.IsValid)
             {
+                using (PizzaContext db = new PizzaContext())
+                {
 
-                return View("FormPost" , nuovaPizza);
+                    List<Categoria> categories = db.Categorie.ToList();
+                    data.categorias = categories;
+
+                }
+                    return View("Create", data);
 
             }
 
             using(PizzaContext db = new PizzaContext())
             {
 
-                Pizza pizzaToCreate = new Pizza(nuovaPizza.nome , nuovaPizza.prezzo , nuovaPizza.descrizione , nuovaPizza.foto);
+                Pizza pizzaToCreate = new Pizza();
+                pizzaToCreate.Nome = data.pizza.Nome;
+                pizzaToCreate.Descrizione = data.pizza.Descrizione;
+                pizzaToCreate.foto = data.pizza.foto;
+                pizzaToCreate.prezzo = data.pizza.prezzo;
                 db.Add(pizzaToCreate);
                 db.SaveChanges();
 
@@ -68,12 +86,13 @@ namespace PizzeriaWebApp.Controllers
         {
 
             Pizza pizzaToEdit = null;
-
+            List<Categoria> categories = new List<Categoria>();
             using (PizzaContext db = new PizzaContext())
             {
                 pizzaToEdit = db.Pizzas
-                     .Where(pizza => pizza.id == id)
+                     .Where(pizza => pizza.Id == id)
                      .FirstOrDefault();
+                categories = db.Categorie.ToList<Categoria>();
 
             }
 
@@ -83,19 +102,27 @@ namespace PizzeriaWebApp.Controllers
             }
             else
             {
-                return View("Update", pizzaToEdit);
+                PizzasCategories model = new PizzasCategories();
+
+                return View("Update", model);
             }
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update (int id , Pizza model)
+        public IActionResult Update (int id , PizzasCategories model)
         {
 
             if (!ModelState.IsValid)
             {
+                using (PizzaContext db = new PizzaContext())
+                {
 
+                    List<Categoria> categories = db.Categorie.ToList();
+                    model.categorias = categories;
+
+                }
                 return View("Update", model);
 
             }
@@ -106,7 +133,7 @@ namespace PizzeriaWebApp.Controllers
             {
 
                 pizzaToEdit = db.Pizzas
-                    .Where(pizza => pizza.id == id)
+                    .Where(pizza => pizza.Id == id)
                     .FirstOrDefault();
 
             }
@@ -114,10 +141,11 @@ namespace PizzeriaWebApp.Controllers
             if (pizzaToEdit != null)
             {
 
-                pizzaToEdit.nome = model.nome;
-                pizzaToEdit.prezzo = model.prezzo;
-                pizzaToEdit.descrizione = model.descrizione;
-                pizzaToEdit.foto = model.foto;
+                pizzaToEdit.Nome = model.pizza.Nome;
+                pizzaToEdit.prezzo = model.pizza.prezzo;
+                pizzaToEdit.Descrizione = model.pizza.Descrizione;
+                pizzaToEdit.foto = model.pizza.foto;
+                pizzaToEdit.CategoriaId = model.pizza.CategoriaId;
 
                 return RedirectToAction("Index");
 
@@ -139,7 +167,7 @@ namespace PizzeriaWebApp.Controllers
             {
 
                 Pizza pizzaToDelete = db.Pizzas
-                    .Where(pizza => pizza.id == id)
+                    .Where(pizza => pizza.Id == id)
                     .FirstOrDefault();
 
                 if(pizzaToDelete != null)

@@ -30,7 +30,7 @@ namespace PizzeriaWebApp.Controllers
             using (PizzaContext db = new PizzaContext())
             {
 
-                Utente utenteToInsert = new Utente(nuovoUtente.nomeUtente, nuovoUtente.password);
+                Utente utenteToInsert = new Utente(nuovoUtente.NomeUtente, nuovoUtente.Password);
                 db.Add(utenteToInsert);
                 db.SaveChanges();
 
@@ -55,7 +55,7 @@ namespace PizzeriaWebApp.Controllers
 
             using (PizzaContext db = new PizzaContext())
             {
-                Utente? result = (from e in db.Utenti where e.nomeUtente == utenteLog.nomeUtente && e.password == utenteLog.password select e).FirstOrDefault();
+                Utente? result = (from e in db.Utenti where e.NomeUtente == utenteLog.NomeUtente && e.Password == utenteLog.Password select e).FirstOrDefault();
                 if (result != null)
                 {
                     

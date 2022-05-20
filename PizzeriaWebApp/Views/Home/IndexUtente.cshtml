@@ -59,7 +59,8 @@
                     result.data.forEach(pizzas => {
                         document.getElementById('pizza-div').innerHTML += 
                             `
-                           
+                            <div class="row text-center justify-content-center">
+                            
                             <div class ="col-3 d-inline-block">
                             <div class="card shadow mb-5 bg-body rounded">
                                 <img src="${pizzas.foto}" class="card-img-top" lt="primaFoto">
@@ -71,6 +72,8 @@
                                     <li class="list-group-item text-danger"><small>Prezzo:</small><br><span class="text-black fw-bold"><small>${pizzas.prezzo}</small></span><span class="text-secondary"></span></li> 
                                 </ul> 
                             </div>
+                            </div>
+
                             </div>
 
                             `
