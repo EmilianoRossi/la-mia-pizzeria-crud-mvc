@@ -70,8 +70,9 @@ namespace PizzeriaWebApp.Controllers
                 Pizza pizzaToCreate = new Pizza();
                 pizzaToCreate.Nome = data.pizza.Nome;
                 pizzaToCreate.Descrizione = data.pizza.Descrizione;
-                pizzaToCreate.foto = data.pizza.foto;
-                pizzaToCreate.prezzo = data.pizza.prezzo;
+                pizzaToCreate.Foto = data.pizza.Foto;
+                pizzaToCreate.Prezzo = data.pizza.Prezzo;
+                pizzaToCreate.CategoriaId = data.pizza.CategoriaId;
                 db.Add(pizzaToCreate);
                 db.SaveChanges();
 
@@ -142,9 +143,9 @@ namespace PizzeriaWebApp.Controllers
             {
 
                 pizzaToEdit.Nome = model.pizza.Nome;
-                pizzaToEdit.prezzo = model.pizza.prezzo;
+                pizzaToEdit.Prezzo = model.pizza.Prezzo;
                 pizzaToEdit.Descrizione = model.pizza.Descrizione;
-                pizzaToEdit.foto = model.pizza.foto;
+                pizzaToEdit.Foto = model.pizza.Foto;
                 pizzaToEdit.CategoriaId = model.pizza.CategoriaId;
 
                 return RedirectToAction("Index");
