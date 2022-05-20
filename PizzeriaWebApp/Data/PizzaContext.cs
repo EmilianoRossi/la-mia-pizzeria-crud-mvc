@@ -12,7 +12,7 @@ namespace PizzeriaWebApp.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
 
-            optionBuilder.UseSqlServer("Data Source=localhost; Database=blog_pizza; Integrated Security= true");
+            optionBuilder.UseSqlServer("Data Source=localhost; Database=pizzeria_db; Integrated Security= true");
 
 
         }
