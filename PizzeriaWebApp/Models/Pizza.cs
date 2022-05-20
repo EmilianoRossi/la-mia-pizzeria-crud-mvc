@@ -19,7 +19,7 @@ namespace PizzeriaWebApp.Models
         [Required(ErrorMessage = " Il link della foto è obbligatorio")]
         [Url(ErrorMessage ="Devi inserire un Url")]
         public string Foto { get; set; }
-        public int CategoriaId { get; set; }
+        public int? CategoriaId { get; set; }
         public Categoria? Categoria { get; set; }
         public Pizza()
         {
@@ -32,9 +32,9 @@ namespace PizzeriaWebApp.Models
         {
 
             this.Nome = nome;
-            this.prezzo = prezzo;
+            this.Prezzo = prezzo;
             this.Descrizione = descrizione;
-            this.foto = foto;
+            this.Foto = foto;
 
         }
 
