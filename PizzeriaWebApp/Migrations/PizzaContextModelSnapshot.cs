@@ -24,75 +24,75 @@ namespace PizzeriaWebApp.Migrations
 
             modelBuilder.Entity("PizzeriaWebApp.Models.Categoria", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("titolo")
+                    b.Property<string>("Titolo")
                         .IsRequired()
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Categorie");
                 });
 
             modelBuilder.Entity("PizzeriaWebApp.Models.Pizza", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("categoriaid")
+                    b.Property<int?>("CategoriaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("descrizione")
+                    b.Property<string>("Descrizione")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("foto")
+                    b.Property<string>("Foto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("nome")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<double>("prezzo")
+                    b.Property<double>("Prezzo")
                         .HasColumnType("float");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("categoriaid");
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Pizzas");
                 });
 
             modelBuilder.Entity("PizzeriaWebApp.Models.Utente", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("nomeUtente")
+                    b.Property<string>("NomeUtente")
                         .IsRequired()
                         .HasMaxLength(18)
                         .HasColumnType("nvarchar(18)");
 
-                    b.Property<string>("password")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(18)
                         .HasColumnType("nvarchar(18)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Utenti");
                 });
@@ -100,15 +100,15 @@ namespace PizzeriaWebApp.Migrations
             modelBuilder.Entity("PizzeriaWebApp.Models.Pizza", b =>
                 {
                     b.HasOne("PizzeriaWebApp.Models.Categoria", "Categoria")
-                        .WithMany("pizzas")
-                        .HasForeignKey("categoriaid");
+                        .WithMany("Pizzas")
+                        .HasForeignKey("CategoriaId");
 
                     b.Navigation("Categoria");
                 });
 
             modelBuilder.Entity("PizzeriaWebApp.Models.Categoria", b =>
                 {
-                    b.Navigation("pizzas");
+                    b.Navigation("Pizzas");
                 });
 #pragma warning restore 612, 618
         }

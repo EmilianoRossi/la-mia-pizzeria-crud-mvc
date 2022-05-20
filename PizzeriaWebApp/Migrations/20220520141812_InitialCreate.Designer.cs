@@ -11,8 +11,8 @@ using PizzeriaWebApp.Data;
 namespace PizzeriaWebApp.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    [Migration("20220516155029_TerzaMigration")]
-    partial class TerzaMigration
+    [Migration("20220520141812_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,31 +23,54 @@ namespace PizzeriaWebApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("PizzeriaWebApp.Models.Pizza", b =>
+            modelBuilder.Entity("PizzeriaWebApp.Models.Categoria", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("descrizione")
+                    b.Property<string>("Titolo")
+                        .IsRequired()
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categorie");
+                });
+
+            modelBuilder.Entity("PizzeriaWebApp.Models.Pizza", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CategoriaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descrizione")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("foto")
+                    b.Property<string>("Foto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("nome")
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<double>("prezzo")
+                    b.Property<double>("Prezzo")
                         .HasColumnType("float");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Pizzas");
                 });
@@ -60,12 +83,12 @@ namespace PizzeriaWebApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("nomeUtente")
+                    b.Property<string>("NomeUtente")
                         .IsRequired()
                         .HasMaxLength(18)
                         .HasColumnType("nvarchar(18)");
 
-                    b.Property<string>("password")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(18)
                         .HasColumnType("nvarchar(18)");
@@ -73,6 +96,22 @@ namespace PizzeriaWebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Utenti");
+                });
+
+            modelBuilder.Entity("PizzeriaWebApp.Models.Pizza", b =>
+                {
+                    b.HasOne("PizzeriaWebApp.Models.Categoria", "Categoria")
+                        .WithMany("Pizzas")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("PizzeriaWebApp.Models.Categoria", b =>
+                {
+                    b.Navigation("Pizzas");
                 });
 #pragma warning restore 612, 618
         }

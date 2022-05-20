@@ -17,8 +17,8 @@
                 <div class="mb-3">
 
                     <strong>Immagine:</strong>
-                    <input asp-for ="pizza.foto" class="d-block w-100" />
-                    <span asp-validation-for="pizza.foto" class="text-success"></span>
+                    <input asp-for ="pizza.Foto" class="d-block w-100" />
+                    <span asp-validation-for="pizza.Foto" class="text-success"></span>
                 </div>    
 
                 <div class="mb-3">
@@ -37,8 +37,8 @@
                 <div class="mb-3">
 
                     <strong>Prezzo:</strong>
-                    <input asp-for ="pizza.prezzo" class="d-block w-100" />
-                    <span asp-validation-for="pizza.prezzo" class="text-success"></span>
+                    <input asp-for ="pizza.Prezzo" class="d-block w-100" />
+                    <span asp-validation-for="pizza.Prezzo" class="text-success"></span>
                 </div>
                 <div class="mb-3">
 
@@ -48,7 +48,7 @@
                     @foreach(Categoria categoria in Model.categorias)
                     {
                             
-                        <option value="@categoria.Id">@categoria.titolo</option>
+                        <option value="@categoria.Id">@categoria.Titolo</option>
 
                     }
                     </select>
